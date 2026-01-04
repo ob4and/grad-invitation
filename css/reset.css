@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+
+/* ---------- Pretnedard ---------- */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-style: normal;
+}
+
+
+
+/* ◼︎ light 추가 */
+/* ---------- Panchang ---------- */
+@font-face {
+  font-family: 'Panchang-Light';
+  src: url('../fonts/Panchang-Light.woff2') format('woff2'),
+       url('../fonts/Panchang-Light.woff') format('woff'),
+       url('../fonts/Panchang-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Regular';
+  src: url('../fonts/Panchang-Regular.woff2') format('woff2'),
+       url('../fonts/Panchang-Regular.woff') format('woff'),
+       url('../fonts/Panchang-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Medium';
+  src: url('../fonts/Panchang-Medium.woff2') format('woff2'),
+       url('../fonts/Panchang-Medium.woff') format('woff'),
+       url('../fonts/Panchang-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Bold';
+  src: url('../fonts/Panchang-Bold.woff2') format('woff2'),
+       url('../fonts/Panchang-Bold.woff') format('woff'),
+       url('../fonts/Panchang-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Extrabold';
+  src: url('../fonts/Panchang-Extrabold.woff2') format('woff2'),
+       url('../fonts/Panchang-Extrabold.woff') format('woff'),
+       url('../fonts/Panchang-Extrabold.ttf') format('truetype');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+
+
+/* ---------- reset ----------- */
+* {margin: 0; padding: 0; box-sizing: border-box; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {text-decoration: inherit; color: inherit;}
+li {list-style: none;}
+img {vertical-align: middle;}
+a img {border: none;}
+address, em, i {font-style: normal;}
+a:focus {outline: none}
+button:focus {outline: none
+}
+
+html { scroll-behavior: smooth; }
+
+
+
+/* ----------- design system ---------- */
+/* color */
+:root {
+  --black: #000;
+  --white: #fff;
+  --green: #4DFF9D; 
+  --pink: #FFA0E0;
+  --yellow: #EFFF55;
+  --purple: #A39DEC;
+  --blue: #00D5FF;
+}
+
+/* 영문 본문용 */
+.en { 
+  /* color: var(--black, #000); */
+  font-family: 'Panchang-Bold';
+}
+
+.en-light {
+  /* color: var(--black, #000); */
+  font-family: 'Panchang-Medium';
+}
+
+/* 국문용 */
+.kr {
+  /* color: var(--black, #000); */
+  font-family: 'Pretendard', sans-serif;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+

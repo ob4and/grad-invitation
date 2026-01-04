@@ -1,0 +1,23 @@
+/* ◼︎ z-index 오류 없을 수 있도록 값 설정 */
+.up-btn {
+    position: fixed;
+    bottom: 8vh;
+    right: 5vw;
+    width: 58px;
+    height: 58px;
+    z-index: 5;
+}
+.up-btn .img-box {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*  ---------- Responsive ---------- */
+/* mobile n tablet */
+@media (max-width: 767px) {
+    .up-btn {
+        display: none;
+    }
+}

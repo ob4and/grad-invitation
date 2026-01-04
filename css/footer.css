@@ -1,0 +1,224 @@
+/* .border {
+    border: 1px solid #f00;
+} */
+
+.wrap {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    padding: 75px 0px;
+    gap: 30px;
+    
+    /* position: absolute; */
+}
+
+br.break-m {
+    display: none;
+}
+
+/* ---------- text_group ---------- */
+.exhibi-name {
+    font-weight: 600;
+    line-height: 150%;
+}
+
+.address {
+    margin-bottom: 62px;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.copyright {
+    font-weight: 400;
+    line-height: 150%; 
+}
+
+
+
+/* ---------- sns ----------- */
+.sns-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sns-container li {
+    color: var(--black);
+    display: flex;
+    align-items: center;
+}
+.sns-container a {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.kjbc_logo {
+    width: 82px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kjdc_logo .img-box {
+    width: 70px;
+    height: 18px;
+}
+.youtube a i {
+    font-size: 28px;
+}
+.instagram a i {
+    font-size: 28px;
+}
+
+
+
+/*  ---------- 반응형 ---------- */
+/* 모바일 */
+@media (max-width: 767px) {
+   
+    br.break-m {
+        display: inline;
+    }
+
+    .wrap {
+        width: 100%;
+    }
+
+    .footer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .text-group li {
+        text-align: center;
+    }
+    .exhibi-name {
+        margin-bottom: 20px;
+        font-size: 11px;
+    }
+    .address {
+        display: none;
+    }  
+    .copyright {
+        font-size: 11px;
+    }
+
+    .sns-container {
+        gap: 40px;
+    }
+    .kjbc_logo {
+        width: 70px;
+        height: 18px;
+    }
+    .kjdc_logo .img-box {
+        width: 72px;
+        height: 28px;
+    }
+    .youtube a i {
+        font-size: 28px;
+    }
+    .instagram a i {
+        font-size: 28px;
+    }
+}
+
+
+
+/* 태블릿 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .wrap {
+        width: 100%;
+    }
+
+    .footer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .text-group li {
+        text-align: center;
+    }
+    .exhibi-name {
+        margin-bottom: 24px;
+        font-size: 14px;
+    }
+    .address {
+        display: none;
+    }  
+
+    .sns-container {
+        height: 40px;
+        gap: 60px;
+    }
+
+    .kjbc_logo {
+        width: 140px;
+        height: 36px;
+    }
+    .kjdc_logo .img-box {
+        width: 100px;
+        height: 24px;
+    }
+    .youtube a i {
+        font-size: 36px;
+    }
+    .instagram a i {
+        font-size: 36px;
+    }
+}
+
+
+
+
+/* 데스크탑 */
+@media (min-width: 1200px) {
+    .wrap {
+        max-width: 1920px;
+        min-width: 1524px;
+    }
+
+    .footer {
+        justify-content: space-around;
+    }
+    .text-group {
+        display: flex;
+        /* padding-left: 190px; */
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .exhibi-name {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .address {
+        font-size: 12px;
+        margin-bottom: 60px;
+        
+    }
+
+    .sns-container {
+        display: flex;
+        /* padding-right: 190px; */
+        align-items: center;
+        gap: 30px;
+    }
+    .sns-container li {
+        height: 40px;
+    }
+}
+
+
+
+
+
+
