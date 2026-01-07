@@ -1,0 +1,665 @@
+html {
+    height: 100vh;
+    position: relative;
+    background-color: #f4f4f4;
+    scroll-behavior: smooth;
+    /* overflow: hidden; */
+}
+
+/* 쏘아 올라가는 공 컨테이너 */
+/* balls container */
+/* 화면 위치만 고정해두고, 나머지 작업은 전부 js */
+/* viewpoint가 px이 아닌 %로 구성되어있기 때문에 반응형으로 작동합니다. */
+#balls-container {
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    pointer-events: none;
+}
+
+.column {
+    flex: 1;
+    position: relative;
+}
+
+.ball {
+    height: 150px;
+    width: 30px;
+    position: absolute;
+    bottom: 0;
+    border-radius: 15px;
+    pointer-events: all;
+    filter: blur(5px);
+}ㄹㄹ
+
+
+/* 제17회 공주대 디컨 온라인 졸업전시 웹사이트로 이동을 도와주는 버튼입니다 */
+/* 현재는 졸업전시 웹사이트 개발 전이라 모달창이 띄워지도록 작업했습니다 */
+
+/* 버튼 */
+.enterbtn {
+    display: inline-flex;
+    /* justify-content: center; */
+    align-items: center;
+    
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.enter-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.callbtn {
+    display: inline-flex;
+    /* justify-content: center; */
+    align-items: center;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.call-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* 인터렉션 기능이 들어간 버튼입니다 */
+.button {
+    display: inline-flex; 
+    border-radius: 999px;
+    color: var(--black, #000);
+    border: none;
+    background: var(--white);
+    fill: var(--black);
+}
+
+.button:hover {
+    color: var(--white, #FFF);
+    fill: var(--white, #FFF);
+    background-color: var(--black);
+    cursor: pointer;
+}
+
+.button:active {
+    color: var(--white);
+    fill: var(--white);
+    background-color: var(--black);
+    cursor: pointer;
+}
+
+
+/* 데코레이션용 화살표 (detail 중간) */
+/* Arrow for Decoration (middle of the details) */
+.arrow-to-right {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    fill: var(--white, #FFF);
+    align-items: center;
+}
+
+.arrow-to-left {
+    width: 34px;
+    height: 34px;
+    transform: rotate(90deg);
+    flex-shrink: 0;
+    fill: var(--white, #FFF);
+    align-items: center;
+}
+
+span {
+    font-weight: 600;
+}
+
+/* 모바일, 태블릿에서만 달라지는 줄바꿈 break-m, -t 클래스 명을 설정했습니다 */
+/* 필요한 경우에만 inline으로 추가해주세요 */
+br.break-m {
+    display: none;
+}
+
+br.break-t {
+    display: none;
+}
+
+/* 초대장은 intro, detail, footer로 구성되어있습니다. */
+/* intro */
+#intro {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+
+}
+
+#intro-textbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.intro-title {
+    text-align: center;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%;
+    letter-spacing: -0.36px;
+}
+
+.intro-content {
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 160%;
+    letter-spacing: -0.36px;
+    text-transform: uppercase;
+}
+
+
+/* 버튼을 누르면 뜨는 안내용 모달 혹은 팝업창 입니다 */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 900;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    /* display: grid; */
+    position: fixed;
+    border-radius: 10px;
+    width: max-content;
+    /* grid-template-columns: minmax(120px, max-content) 1fr; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, .9);
+    /* "delay" the visibility transition */
+    -webkit-transition: opacity .5s, visibility 0s linear .5s;
+    transition: opacity .5s, visibility 0s linear .5s;
+    z-index: 1;
+
+    font-size: 16px;
+    font-style: normal;
+}
+
+.popup:target {
+    visibility: visible;
+    opacity: 1;
+    /* cancel visibility transition delay */
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.popup .close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 5px;
+    color: var(--black, #000);
+    transition: color .3s;
+    font-size: 2em;
+    line-height: .6em;
+    text-decoration-line: none;
+}
+
+.popup .close:hover {
+    color: var(--green);
+}
+
+
+/* detail*/
+#detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+}
+
+.detail-left {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.detail-right {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.detail-title {
+    display: inline-flex;
+    
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    text-transform: uppercase;
+}
+
+.detail-content {
+    font-style: normal;
+    font-weight: 300;
+    line-height: 170%;
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+}
+
+#map {
+    width: 100vw;
+    height: 300px;  
+}
+
+.htc-textbox {
+    background-color: var(--white);
+    box-shadow: 14px 14px 30px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+    text-wrap: nowrap;
+
+    font-style: normal;
+    font-weight: 300;
+    line-height: 160%;
+    letter-spacing: -0.32px;
+}
+
+.htc-content {
+    padding-top: 4px;
+    padding-left: 16px;
+}
+
+
+
+
+/* Mobile - xs */
+@media (min-width:320px) {
+    /* font-size: 16px; */
+
+    /* 버튼 */
+    .enterbtn {
+        padding: 14px 28px 14px 34px;
+        gap: 10px;
+    
+        font-size: 16px;
+    }
+    
+    .enter-icon {
+        width: 16px;
+        height: 16px;   
+    }
+    
+    
+    .callbtn {
+        padding: 10px 20px;
+        gap: 10px;
+    
+        font-size: 12px;
+    }
+    
+    .call-icon {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* 브레이크 포인트 */
+    br.break-m {
+        display: inline;
+    }
+    
+    br.break-t {
+        display: inline;
+    }
+
+    /* 온라인초대장 디자인 */
+    #intro {
+        gap: 50px;
+
+    }
+    
+    #intro-textbox {
+        gap: 40px;
+    }
+    
+    .intro-title {
+        font-size: 36px;
+    }
+    
+    .intro-content {
+        font-size: 18px;
+    }
+
+    .popup {
+        padding: 30px;
+        font-size: 16px;
+    }
+
+
+    /* detail은 시간 및 장소 등의 정보를 보여줍니다. */
+    #detail {
+        padding-bottom: 40px;
+        gap: 68px;
+    }
+
+    .detail-left {
+        padding-left: 40px;
+        gap: 40px;
+    }
+
+    .detail-right {
+        padding-right: 40px;
+        gap: 40px;
+    }
+
+    .detail-title {
+        gap: 10px;
+        font-size: 18px;
+    }
+
+    .detail-content {
+        font-size: 20px;
+    }
+
+    .arrow-to-right {
+        width: 34px;
+        height: 34px;
+    }
+
+    .arrow-to-left {
+        width: 34px;
+        height: 34px;
+    }
+
+    #map {
+        height: 300px;  
+    }
+
+    .htc-textbox {
+        /* position:absolute; */
+        /* width: 100vw; */
+        padding: 28px 24px;
+        margin: 30px 20px;
+
+        font-size: 16px;
+    }
+
+    .gap {
+        padding-bottom: 30px;
+    }
+
+    .htc-content {
+        padding-top: 4px;
+        padding-left: 16px;
+    }
+    
+}
+
+/* Tablet Portrait - s */
+@media (min-width:768px) {
+    /* font-size: 18px; */
+
+    /* 버튼 */
+    .enterbtn {
+        padding: 20px 48px 20px 54px;
+        gap: 16px;
+    
+        font-size: 24px;
+    }
+    
+    .enter-icon {
+        width: 24px;
+        height: 24px;   
+    }
+    
+    .callbtn {
+        padding: 14px 24px;
+        gap: 16px;
+    
+        font-size: 16px;
+    }
+    
+    .call-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* 브레이크 포인트 */
+    br.break-m {
+        display: none;
+    }
+    
+    br.break-t {
+        display: inline;
+    }
+
+    /* 온라인초대장 디자인 */
+    #intro {
+        gap: 100px;
+
+    }
+    
+    #intro-textbox {
+        gap: 60px;
+    }
+    
+    .intro-title {
+        font-size: 48px;
+    }
+    
+    .intro-content {
+        font-size: 20px;
+    }
+
+    .popup {
+        padding: 30px 50px 30px 30px;
+        font-size: 18px;
+    }
+
+
+    /* detail은 시간 및 장소 등의 정보를 보여줍니다. */
+    #detail {
+        padding-bottom: 60px;
+        gap: 134px;
+    }
+
+    .detail-left {
+        padding-left: 110px;
+        gap: 60px;
+    }
+
+    .detail-right {
+        padding-right: 110px;
+        gap: 60px;
+    }
+
+    .detail-title {
+        gap: 14px;
+        font-size: 24px;
+    }
+
+    .detail-content {
+        font-size: 30px;
+    }
+
+    .arrow-to-right {
+        width: 60px;
+        height: 60px;
+    }
+
+    .arrow-to-left {
+        width: 60px;
+        height: 60px;
+    }
+
+    #map {
+        height: 500px;  
+    }
+
+    .htc-textbox {
+        /* position:absolute; */
+        /* width: 100vw; */
+        padding: 32px 28px;
+        margin: 30px 25px;
+
+        font-size: 18px;
+    }
+
+    .gap {
+        padding-bottom: 34px;
+    }
+
+    .htc-content {
+        padding-top: 4px;
+        padding-left: 20px;
+    }
+}
+
+/* Tablet Landscape - ml */
+@media (min-width:1024px) {
+    /* font-size: 20px; */
+    
+    /* 버튼 */
+    .enterbtn {
+        padding: 26px 68px 26px 74px;
+        gap: 20px;
+    
+        font-size: 32px;
+    }
+    
+    .enter-icon {
+        width: 32px;
+        height: 32px;   
+    }
+    
+    .callbtn {
+        padding: 18px 36px;
+        gap: 20px;
+    
+        font-size: 20px;
+    }
+    
+    .call-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* 온라인초대장 디자인 */
+    #intro {
+        gap: 100px;
+
+    }
+    
+    #intro-textbox {
+        gap: 70px;
+    }
+    
+    .intro-title {
+        font-size: 64px;
+    }
+    
+    .intro-content {
+        font-size: 24px;
+    }
+
+    .popup {
+        padding: 36px 60px 36px 36px;
+        font-size: 20px;
+    }
+
+
+    /* detail은 시간 및 장소 등의 정보를 보여줍니다. */
+    #detail {
+        padding-bottom: 80px;
+        gap: 134px;
+    }
+
+    .detail-left {
+        padding: 0;
+        width: 1000px;
+        gap: 90px;
+    }
+    
+    .detail-right {
+        padding: 0;
+        width: 1000px;
+        gap: 90px;
+    }
+
+    .detail-title {
+        gap: 18px;
+        font-size: 32px;
+    }
+
+    .detail-content {
+        font-size: 40px;
+    }
+
+    .arrow-to-right {
+        width: 70px;
+        height: 70px;
+    }
+
+    .arrow-to-left {
+        width: 70px;
+        height: 70px;
+    }
+
+    #map {
+        height: 700px;  
+    }
+
+    #htc-wrap {
+        position: relative;
+    }
+
+    .htc-textbox {
+        position:absolute;
+        top: 50%;
+        left: 52%;
+        transform: translateY(-50%);
+        padding: 36px 32px;
+
+        font-size: 20px;
+    }
+
+    .gap {
+        padding-bottom: 34px;
+    }
+
+    .htc-content {
+        padding-top: 4px;
+        padding-left: 24px;
+    }
+
+
+}
+
