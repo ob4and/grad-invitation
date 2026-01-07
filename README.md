@@ -1,4 +1,4 @@
-# Grad Web — Web Invitation   🎉
+# Web Invitation   🎉
 **Digital Exhibition Entry Page (2024)**
 
 ## Overview
